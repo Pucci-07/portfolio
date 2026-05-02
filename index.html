@@ -1,27 +1,219 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio JoJo – Showcase complet avec thème JoJo's Bizarre Adventure">
+    <title>JoJo Portfolio ⭐</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="jojo-theme.css">
-    <title>JoJo Portfolio</title>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My JoJo Portfolio</h1>
-    </header>
-    <main>
-        <section id="home"> <!-- Home Section --> </section>
-        <section id="about"> <!-- About Section --> </section>
-        <section id="projects"> <!-- Projects Section --> </section>
-        <section id="skills"> <!-- Skills Section --> </section>
-        <section id="contact"> <!-- Contact Section --> </section>
-    </main>
-    <script src="auth.js"></script>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!--  AUTH SECTION                                       -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <section id="auth-section">
+        <div class="auth-card stand-aura">
+            <div class="auth-logo">
+                <span class="jojo-star" aria-hidden="true">⭐</span>
+            </div>
+            <h1 id="auth-title" class="gold-shine">✨ Connexion</h1>
+
+            <!-- Login Form -->
+            <form id="login-form" autocomplete="on" novalidate>
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" placeholder="dio@jojoworld.com" required autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Mot de passe</label>
+                    <input type="password" id="login-password" placeholder="••••••••" required autocomplete="current-password" minlength="6">
+                </div>
+                <button type="submit" class="btn btn-primary">🌟 Se connecter</button>
+                <p class="auth-switch">Pas encore de compte ? <span class="auth-link" id="show-register">Créer un compte</span></p>
+            </form>
+
+            <!-- Register Form -->
+            <form id="register-form" class="hidden" autocomplete="on" novalidate>
+                <div class="form-group">
+                    <label for="reg-name">Nom complet</label>
+                    <input type="text" id="reg-name" placeholder="Giorno Giovanna" required autocomplete="name">
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">Email</label>
+                    <input type="email" id="reg-email" placeholder="giorno@passione.it" required autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">Mot de passe (min. 6 caractères)</label>
+                    <input type="password" id="reg-password" placeholder="••••••••" required autocomplete="new-password" minlength="6">
+                </div>
+                <button type="submit" class="btn btn-primary">🎪 Créer mon compte</button>
+                <p class="auth-switch">Déjà un compte ? <span class="auth-link" id="show-login">Se connecter</span></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!--  PORTFOLIO SECTION                                  -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div id="portfolio-section" class="hidden">
+
+        <!-- Top Navigation Bar -->
+        <nav class="topbar" role="navigation" aria-label="Navigation principale">
+            <span class="topbar-brand gold-shine">⭐ JoJo Portfolio</span>
+            <div class="topbar-nav">
+                <a class="nav-link active" data-section="home" href="#home">Accueil</a>
+                <a class="nav-link" data-section="about" href="#about">À propos</a>
+                <a class="nav-link" data-section="projects" href="#projects">Projets</a>
+                <a class="nav-link" data-section="skills" href="#skills">Compétences</a>
+                <a class="nav-link" data-section="contact" href="#contact">Contact</a>
+            </div>
+            <div class="topbar-right">
+                <span id="welcome-name"></span>
+                <button id="logout-btn" class="btn-logout" title="Se déconnecter">Déconnexion</button>
+            </div>
+        </nav>
+
+        <!-- ── HOME ─────────────────────────────────────── -->
+        <section id="home" class="portfolio-section muda-bg" aria-labelledby="home-heading">
+            <div class="container">
+                <h1 class="hero-title animate-on-scroll" id="home-heading">Bizarre Portfolio</h1>
+                <p class="hero-sub animate-on-scroll">Chaque visite révèle un arc JoJo différent&nbsp;🎲</p>
+                <div id="jojo-timeline" class="animate-on-scroll"></div>
+            </div>
+        </section>
+
+        <!-- ── ABOUT ─────────────────────────────────────── -->
+        <section id="about" class="portfolio-section" aria-labelledby="about-heading">
+            <div class="container">
+                <h2 class="section-title jojo-heading animate-on-scroll" id="about-heading">À propos</h2>
+                <div class="about-grid">
+                    <!-- Display -->
+                    <div class="animate-on-scroll">
+                        <p class="about-bio-text" id="bio-display">Remplissez votre bio ci-dessous pour qu'elle apparaisse ici.</p>
+                        <div id="social-links" class="social-links"></div>
+                    </div>
+                    <!-- Edit form -->
+                    <div class="form-card animate-on-scroll">
+                        <h3>✏️ Modifier mon profil</h3>
+                        <form id="profile-form" novalidate>
+                            <div class="form-group">
+                                <label for="profile-bio">Bio</label>
+                                <textarea id="profile-bio" placeholder="Parlez-vous de vous..." rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-github">GitHub URL</label>
+                                <input type="url" id="profile-github" placeholder="https://github.com/...">
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-linkedin">LinkedIn URL</label>
+                                <input type="url" id="profile-linkedin" placeholder="https://linkedin.com/in/...">
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-twitter">Twitter URL</label>
+                                <input type="url" id="profile-twitter" placeholder="https://twitter.com/...">
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-discord">Discord (texte)</label>
+                                <input type="text" id="profile-discord" placeholder="Username#0000">
+                            </div>
+                            <button type="submit" class="btn btn-primary">💾 Sauvegarder</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── PROJECTS ──────────────────────────────────── -->
+        <section id="projects" class="portfolio-section" aria-labelledby="projects-heading">
+            <div class="container">
+                <h2 class="section-title jojo-heading animate-on-scroll" id="projects-heading">Projets</h2>
+                <div id="projects-list" class="projects-list animate-on-scroll"></div>
+                <div class="form-card animate-on-scroll">
+                    <h3>➕ Ajouter un projet</h3>
+                    <form id="project-form" novalidate>
+                        <div class="form-group">
+                            <label for="proj-title">Titre *</label>
+                            <input type="text" id="proj-title" placeholder="Mon Super Projet" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="proj-desc">Description</label>
+                            <textarea id="proj-desc" placeholder="Décrivez votre projet..." rows="2"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="proj-tech">Technologies (séparées par des virgules)</label>
+                            <input type="text" id="proj-tech" placeholder="JavaScript, CSS, HTML">
+                        </div>
+                        <div class="form-group">
+                            <label for="proj-link">Lien du projet</label>
+                            <input type="url" id="proj-link" placeholder="https://github.com/...">
+                        </div>
+                        <button type="submit" class="btn btn-primary">💎 Ajouter le projet</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── SKILLS ────────────────────────────────────── -->
+        <section id="skills" class="portfolio-section" aria-labelledby="skills-heading">
+            <div class="container">
+                <h2 class="section-title jojo-heading animate-on-scroll" id="skills-heading">Compétences</h2>
+                <div id="skills-list" class="skills-list animate-on-scroll"></div>
+                <div class="form-card animate-on-scroll">
+                    <h3>➕ Ajouter une compétence</h3>
+                    <form id="skill-form" novalidate>
+                        <div class="form-group">
+                            <label for="skill-name">Compétence *</label>
+                            <input type="text" id="skill-name" placeholder="JavaScript, CSS, Python..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="skill-level">Niveau</label>
+                            <select id="skill-level">
+                                <option value="Expert">⭐ Expert</option>
+                                <option value="Intermédiaire" selected>🌀 Intermédiaire</option>
+                                <option value="Débutant">🌱 Débutant</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">⭐ Ajouter la compétence</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── CONTACT ───────────────────────────────────── -->
+        <section id="contact" class="portfolio-section" aria-labelledby="contact-heading">
+            <div class="container">
+                <h2 class="section-title jojo-heading animate-on-scroll" id="contact-heading">Contact</h2>
+                <div class="form-card animate-on-scroll" style="max-width:580px">
+                    <h3>📨 Envoyez un message</h3>
+                    <form id="contact-form" novalidate>
+                        <div class="form-group">
+                            <label for="contact-name">Votre nom</label>
+                            <input type="text" id="contact-name" placeholder="Jonathan Joestar" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email</label>
+                            <input type="email" id="contact-email" placeholder="jonathan@joestar.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">Message</label>
+                            <textarea id="contact-message" placeholder="Votre message..." rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">🌟 Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </div><!-- /#portfolio-section -->
+
+    <!-- Scripts (order matters: storage → auth → components → timeline → effects → main) -->
     <script src="storage.js"></script>
+    <script src="auth.js"></script>
     <script src="components.js"></script>
     <script src="timeline.js"></script>
     <script src="effects.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
