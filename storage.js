@@ -63,7 +63,7 @@ const storage = {
 
     getUserData(email) {
         const users = this.getUsers();
-        return users[email] || null;
+        return users[email] ?? null;
     },
 
     saveUserData(email, data) {
@@ -73,8 +73,7 @@ const storage = {
     },
 
     getPortfolioData(email) {
-        const user = this.getUserData(email);
-        return user ? user.portfolio || {} : {};
+        return this.getUserData(email)?.portfolio ?? {};
     },
 
     savePortfolioData(email, portfolioData) {

@@ -18,7 +18,8 @@ const auth = {
             return { success: false, message: 'Un compte existe déjà avec cet email.' };
         }
 
-        const hashedPassword = btoa(password); // simple obfuscation for demo
+        const hashedPassword = btoa(password); // NOTE: btoa is base64 encoding, NOT encryption.
+        // This is a client-side demo only – never store passwords this way in a real app.
         users[email] = {
             name,
             email,
