@@ -1,5 +1,422 @@
-/* Advanced animations and effects */
-.jojo-animation {
-    transition: all 0.3s ease;
+/* ============================================================
+   jojo-theme.css — JoJo's Bizarre Adventure Advanced Effects
+   ============================================================ */
+
+/* ── Global JoJo keyframes ─────────────────────────────────── */
+
+/* Golden shimmer across any element */
+@keyframes golden-shimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position:  200% center; }
 }
-/* Other animations */
+
+/* Neon pulse glow */
+@keyframes neon-pulse {
+    0%, 100% {
+        box-shadow:
+            0 0  6px rgba(255, 215, 0, 0.5),
+            0 0 20px rgba(255, 215, 0, 0.3),
+            0 0 40px rgba(255, 215, 0, 0.1);
+    }
+    50% {
+        box-shadow:
+            0 0 12px rgba(255, 215, 0, 0.8),
+            0 0 30px rgba(255, 215, 0, 0.55),
+            0 0 60px rgba(255, 215, 0, 0.25);
+    }
+}
+
+/* Stand manifestation flicker */
+@keyframes stand-flicker {
+    0%, 100% { opacity: 1;   filter: brightness(1);   }
+    8%        { opacity: 0.9; filter: brightness(1.15); }
+    10%       { opacity: 1;   filter: brightness(0.9);  }
+    15%       { opacity: 0.8; filter: brightness(1.2);  }
+    17%       { opacity: 1;   filter: brightness(1);    }
+    92%       { opacity: 1;   filter: brightness(1.1);  }
+    94%       { opacity: 0.7; filter: brightness(0.8);  }
+    96%       { opacity: 1;   filter: brightness(1);    }
+}
+
+/* Text glitch — Stand manifestation energy */
+@keyframes text-glitch {
+    0%  { clip-path: inset(0 0 98% 0); transform: skewX(0deg);    }
+    5%  { clip-path: inset(0 0 85% 0); transform: skewX(-4deg);   }
+    10% { clip-path: inset(55% 0 5% 0); transform: skewX(2deg);   }
+    15% { clip-path: inset(20% 0 70% 0); transform: skewX(-3deg); }
+    20% { clip-path: inset(0 0 98% 0); transform: skewX(0deg);    }
+    100%{ clip-path: inset(0 0 98% 0); transform: skewX(0deg);    }
+}
+
+@keyframes glitch-pseudo {
+    0%  { left: 2px;  top: -2px; background: rgba(255, 0, 0, 0.07); }
+    25% { left: -2px; top:  2px; background: rgba(0, 0, 255, 0.07); }
+    50% { left:  1px; top: -1px; background: rgba(255, 0, 0, 0.07); }
+    75% { left: -1px; top:  1px; background: rgba(0, 255, 0, 0.07); }
+    100%{ left:  2px; top: -2px; background: rgba(255, 0, 0, 0.07); }
+}
+
+/* Star Platinum — rapid burst */
+@keyframes star-burst {
+    0%   { transform: scale(1)    rotate(0deg);    opacity: 1; }
+    50%  { transform: scale(1.06) rotate(2deg);    opacity: 0.9; }
+    75%  { transform: scale(0.98) rotate(-1deg);   opacity: 1; }
+    100% { transform: scale(1)    rotate(0deg);    opacity: 1; }
+}
+
+/* Hamon ripple */
+@keyframes hamon-ripple {
+    0%   { transform: scale(1);   opacity: 0.7; }
+    100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* Dio's World — time stop purple wash */
+@keyframes time-stop-wash {
+    0%   { filter: saturate(1)   hue-rotate(0deg);   }
+    50%  { filter: saturate(0.3) hue-rotate(270deg);  }
+    100% { filter: saturate(1)   hue-rotate(0deg);   }
+}
+
+/* Floating for stand orbs / icons */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-10px); }
+}
+
+/* Rotate orbs slowly */
+@keyframes orbit {
+    from { transform: rotate(0deg)   translateX(60px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
+}
+
+/* ── Hero section — Dio Aesthetic ──────────────────────────── */
+.section-home {
+    background:
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(139, 0, 139, 0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(255, 215, 0, 0.08) 0%, transparent 60%),
+        linear-gradient(160deg, #1a1a1a 0%, #12001a 60%, #1a1a1a 100%);
+}
+
+/* ── Hero title — Golden Hour shimmer ──────────────────────── */
+.hero-title .title-line--gold {
+    background: linear-gradient(
+        90deg,
+        #c9a800 0%,
+        #FFD700 30%,
+        #fffde0 50%,
+        #FFD700 70%,
+        #c9a800 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: golden-shimmer 3.5s linear infinite;
+}
+
+/* ── Hero particles — Stand Aura ────────────────────────────── */
+.hero-particles::before,
+.hero-particles::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero-particles::before {
+    width: 600px;
+    height: 600px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.06) 0%, transparent 70%);
+    animation: neon-pulse 4s ease-in-out infinite;
+}
+
+.hero-particles::after {
+    width: 900px;
+    height: 900px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    border: 1px solid rgba(139, 0, 139, 0.12);
+    animation: hamon-ripple 6s ease-out infinite;
+}
+
+/* ── Glitch text effect — Stand manifestation ───────────────── */
+.glitch {
+    position: relative;
+    display: inline-block;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    animation: text-glitch 4s infinite, glitch-pseudo 4s infinite;
+}
+
+.glitch::before {
+    color: #ff0080;
+    animation-delay: 0s;
+    mix-blend-mode: screen;
+}
+
+.glitch::after {
+    color: #00ffff;
+    animation-delay: 0.07s;
+    mix-blend-mode: screen;
+}
+
+/* ── Neon glow border — JoJo color border effect ────────────── */
+.neon-border {
+    border: 1px solid var(--color-gold);
+    animation: neon-pulse 2.5s ease-in-out infinite;
+}
+
+.neon-border--magenta {
+    border-color: var(--color-magenta-light);
+    animation: neon-pulse-magenta 2.5s ease-in-out infinite;
+}
+
+@keyframes neon-pulse-magenta {
+    0%, 100% {
+        box-shadow:
+            0 0  6px rgba(179, 0, 179, 0.5),
+            0 0 20px rgba(179, 0, 179, 0.3),
+            0 0 40px rgba(179, 0, 179, 0.1);
+    }
+    50% {
+        box-shadow:
+            0 0 12px rgba(179, 0, 179, 0.8),
+            0 0 30px rgba(179, 0, 179, 0.55),
+            0 0 60px rgba(179, 0, 179, 0.25);
+    }
+}
+
+.neon-border--turquoise {
+    border-color: var(--color-turquoise);
+    animation: neon-pulse-turquoise 2.5s ease-in-out infinite;
+}
+
+@keyframes neon-pulse-turquoise {
+    0%, 100% {
+        box-shadow:
+            0 0  6px rgba(0, 206, 209, 0.5),
+            0 0 20px rgba(0, 206, 209, 0.3),
+            0 0 40px rgba(0, 206, 209, 0.1);
+    }
+    50% {
+        box-shadow:
+            0 0 12px rgba(0, 206, 209, 0.8),
+            0 0 30px rgba(0, 206, 209, 0.55),
+            0 0 60px rgba(0, 206, 209, 0.25);
+    }
+}
+
+/* ── Navbar — Stand aura on scroll ─────────────────────────── */
+.navbar.scrolled {
+    border-bottom-color: rgba(255, 215, 0, 0.35);
+    box-shadow:
+        0 4px 30px rgba(255, 215, 0, 0.12),
+        0 1px 0   rgba(255, 215, 0, 0.08) inset;
+}
+
+/* Nav logo hover — Star Platinum burst */
+.nav-logo:hover .logo-star {
+    animation: star-burst 0.4s ease-out, spin-star 8s linear infinite;
+    color: var(--color-turquoise);
+}
+
+/* ── Buttons — JoJo aesthetic ───────────────────────────────── */
+[data-jojo="btn"].btn-primary {
+    position: relative;
+    overflow: hidden;
+}
+
+[data-jojo="btn"].btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        transparent 25%,
+        rgba(255, 255, 255, 0.25) 50%,
+        transparent 75%
+    );
+    background-size: 200% 100%;
+    background-position: 200% center;
+    transition: background-position 0.5s ease;
+}
+
+[data-jojo="btn"].btn-primary:hover::after {
+    background-position: -200% center;
+}
+
+/* ── Cards — Stand energy on hover ─────────────────────────── */
+[data-jojo="card"]:hover {
+    animation: stand-flicker 1.2s ease-in-out;
+}
+
+/* ── Project cards — Stone Ocean vibe ──────────────────────── */
+[data-jojo="project-card"] {
+    background: linear-gradient(
+        135deg,
+        #1e1e2e 0%,
+        #24243e 100%
+    );
+}
+
+[data-jojo="project-card"]:hover .project-title {
+    text-shadow:
+        0 0  8px rgba(255, 215, 0, 0.6),
+        0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+/* ── Skills — Mystical Aura ─────────────────────────────────── */
+[data-jojo="skill-card"]:hover {
+    box-shadow:
+        0 12px 40px rgba(0, 206, 209, 0.15),
+        inset 0 1px 0 rgba(0, 206, 209, 0.1);
+}
+
+.skill-bar__fill {
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-bar__fill.animated::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.25) 50%,
+        transparent 100%
+    );
+    background-size: 80px 100%;
+    animation: shimmer-bar 2s linear infinite;
+}
+
+@keyframes shimmer-bar {
+    from { background-position: -80px 0; }
+    to   { background-position: calc(100% + 80px) 0; }
+}
+
+/* ── Section — Saga timeline accent ────────────────────────── */
+.section-header .section-tag {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.section-header .section-tag::before,
+.section-header .section-tag::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--color-gold);
+    opacity: 0.5;
+}
+
+/* ── About section — Stand orbs ────────────────────────────── */
+.section-about .card-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+.about-card:nth-child(2) .card-icon {
+    animation-delay: 0.5s;
+}
+
+.about-card:nth-child(3) .card-icon {
+    animation-delay: 1s;
+}
+
+/* ── Contact section — Mystical portal ─────────────────────── */
+.section-contact {
+    background:
+        radial-gradient(ellipse 70% 50% at 50% 80%, rgba(0, 206, 209, 0.06) 0%, transparent 70%),
+        var(--color-bg);
+}
+
+.contact-link:hover .contact-icon {
+    animation: star-burst 0.35s ease-out;
+}
+
+/* ── Footer — Requiem quote glow ────────────────────────────── */
+.footer-quote {
+    text-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
+}
+
+/* ── Utility classes ────────────────────────────────────────── */
+
+/* Apply Stand Flicker to any element */
+.stand-flicker {
+    animation: stand-flicker 3s ease-in-out infinite;
+}
+
+/* Apply Golden Hour shimmer to text */
+.golden-text {
+    background: linear-gradient(
+        90deg,
+        #c9a800, #FFD700, #fffde0, #FFD700, #c9a800
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: golden-shimmer 3.5s linear infinite;
+}
+
+/* Mystical aura box shadow */
+.mystical-aura {
+    box-shadow:
+        0 0 15px rgba(139, 0, 139, 0.4),
+        0 0 40px rgba(139, 0, 139, 0.15),
+        0 0 80px rgba(255, 215, 0, 0.08);
+}
+
+/* Dio's World time-stop effect (add via JS for dramatic moments) */
+.time-stop {
+    animation: time-stop-wash 2s ease-in-out forwards;
+}
+
+/* Hamon ripple ring around an element */
+.hamon-ring {
+    position: relative;
+    isolation: isolate;
+}
+
+.hamon-ring::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: inherit;
+    border: 2px solid var(--color-gold);
+    animation: hamon-ripple 2s ease-out infinite;
+    pointer-events: none;
+}
+
+/* ── Scrollbar (Webkit) ─────────────────────────────────────── */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-magenta);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gold);
+}
