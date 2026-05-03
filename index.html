@@ -3,25 +3,353 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JoJo's Bizarre Portfolio — A premium developer portfolio inspired by JoJo's Bizarre Adventure">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="jojo-theme.css">
-    <title>JoJo Portfolio</title>
+    <title>JoJo Portfolio — Pucci-07</title>
 </head>
-<body>
-    <header>
-        <h1>Welcome to My JoJo Portfolio</h1>
-    </header>
-    <main>
-        <section id="home"> <!-- Home Section --> </section>
-        <section id="about"> <!-- About Section --> </section>
-        <section id="projects"> <!-- Projects Section --> </section>
-        <section id="skills"> <!-- Skills Section --> </section>
-        <section id="contact"> <!-- Contact Section --> </section>
-    </main>
+<body data-theme="dark">
+
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo" aria-label="Home">
+                <span class="logo-star">★</span>
+                <span class="logo-text">PUCCI</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu" role="list">
+                <li><a href="#home"    class="nav-link" data-section="home">Home</a></li>
+                <li><a href="#about"   class="nav-link" data-section="about">About</a></li>
+                <li><a href="#projects"class="nav-link" data-section="projects">Projects</a></li>
+                <li><a href="#skills"  class="nav-link" data-section="skills">Skills</a></li>
+                <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero / Home Section -->
+    <section id="home" class="section section-home" data-jojo="hero" aria-label="Home">
+        <div class="hero-particles" aria-hidden="true"></div>
+        <div class="container hero-content">
+            <p class="hero-eyebrow animate-on-scroll">Your Next Developer</p>
+            <h1 class="hero-title animate-on-scroll">
+                <span class="title-line title-line--gold">BIZARRE</span>
+                <span class="title-line title-line--white">PORTFOLIO</span>
+            </h1>
+            <p class="hero-subtitle animate-on-scroll">
+                Crafting digital stands with precision and style.
+                <em class="jojo-italic">Yare yare daze…</em>
+            </p>
+            <div class="hero-cta animate-on-scroll">
+                <a href="#projects" class="btn btn-primary" data-jojo="btn">View Projects</a>
+                <a href="#contact"  class="btn btn-outline" data-jojo="btn">Contact Me</a>
+            </div>
+        </div>
+        <div class="scroll-indicator" aria-hidden="true">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section section-about" data-jojo="about" aria-label="About me">
+        <div class="container">
+            <header class="section-header animate-on-scroll">
+                <span class="section-tag">— Part I —</span>
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">The Origin Story</p>
+            </header>
+            <div class="about-grid">
+                <div class="about-card animate-on-scroll" data-jojo="card">
+                    <div class="card-icon" aria-hidden="true">⚡</div>
+                    <h3>The Stand</h3>
+                    <p>
+                        A passionate full-stack developer with a bizarre talent for
+                        building elegant, performant web applications.
+                    </p>
+                </div>
+                <div class="about-card animate-on-scroll" data-delay="100" data-jojo="card">
+                    <div class="card-icon" aria-hidden="true">💎</div>
+                    <h3>The Power</h3>
+                    <p>
+                        Specialising in modern JavaScript, React, Node.js and CSS
+                        artistry — every pixel placed with purpose.
+                    </p>
+                </div>
+                <div class="about-card animate-on-scroll" data-delay="200" data-jojo="card">
+                    <div class="card-icon" aria-hidden="true">🌟</div>
+                    <h3>The Resolve</h3>
+                    <p>
+                        Turning coffee into code since day one, with an unbreakable
+                        will to ship clean, maintainable software.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section section-projects" data-jojo="projects" aria-label="Projects">
+        <div class="container">
+            <header class="section-header animate-on-scroll">
+                <span class="section-tag">— Part II —</span>
+                <h2 class="section-title">Projects</h2>
+                <p class="section-subtitle">Stands Manifest Here</p>
+            </header>
+            <div class="projects-grid">
+
+                <article class="project-card animate-on-scroll" data-jojo="project-card" aria-label="Project Star Platinum">
+                    <div class="project-card__overlay" aria-hidden="true"></div>
+                    <div class="project-card__content">
+                        <span class="project-tag">Full Stack</span>
+                        <h3 class="project-title">Star Platinum</h3>
+                        <p class="project-desc">
+                            A real-time collaboration platform with a blazing-fast
+                            Node.js back end and a React front end.
+                        </p>
+                        <ul class="project-tech" aria-label="Technologies used">
+                            <li>React</li><li>Node.js</li><li>WebSockets</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-sm btn-primary" aria-label="View Star Platinum demo">Demo</a>
+                            <a href="#" class="btn btn-sm btn-outline" aria-label="View Star Platinum source code">Code</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card animate-on-scroll" data-delay="100" data-jojo="project-card" aria-label="Project The World">
+                    <div class="project-card__overlay" aria-hidden="true"></div>
+                    <div class="project-card__content">
+                        <span class="project-tag">Front End</span>
+                        <h3 class="project-title">The World</h3>
+                        <p class="project-desc">
+                            An interactive 3-D portfolio visualiser built with
+                            Three.js and GSAP animations.
+                        </p>
+                        <ul class="project-tech" aria-label="Technologies used">
+                            <li>Three.js</li><li>GSAP</li><li>WebGL</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-sm btn-primary" aria-label="View The World demo">Demo</a>
+                            <a href="#" class="btn btn-sm btn-outline" aria-label="View The World source code">Code</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card animate-on-scroll" data-delay="200" data-jojo="project-card" aria-label="Project Stone Free">
+                    <div class="project-card__overlay" aria-hidden="true"></div>
+                    <div class="project-card__content">
+                        <span class="project-tag">Mobile</span>
+                        <h3 class="project-title">Stone Free</h3>
+                        <p class="project-desc">
+                            A cross-platform mobile app with a clean UI and offline
+                            first data sync powered by IndexedDB.
+                        </p>
+                        <ul class="project-tech" aria-label="Technologies used">
+                            <li>React Native</li><li>Redux</li><li>IndexedDB</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-sm btn-primary" aria-label="View Stone Free demo">Demo</a>
+                            <a href="#" class="btn btn-sm btn-outline" aria-label="View Stone Free source code">Code</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section section-skills" data-jojo="skills" aria-label="Skills">
+        <div class="container">
+            <header class="section-header animate-on-scroll">
+                <span class="section-tag">— Part III —</span>
+                <h2 class="section-title">Skills</h2>
+                <p class="section-subtitle">Abilities Awakened</p>
+            </header>
+            <div class="skills-grid">
+
+                <div class="skill-category animate-on-scroll" data-jojo="skill-card">
+                    <h3 class="skill-category__title">
+                        <span class="skill-icon" aria-hidden="true">⚔️</span> Front End
+                    </h3>
+                    <ul class="skill-list" role="list">
+                        <li class="skill-item">
+                            <span class="skill-name">HTML / CSS</span>
+                            <div class="skill-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
+                                <div class="skill-bar__fill" style="--skill-pct: 95%"></div>
+                            </div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">JavaScript / TypeScript</span>
+                            <div class="skill-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                                <div class="skill-bar__fill" style="--skill-pct: 90%"></div>
+                            </div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">React / Next.js</span>
+                            <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                                <div class="skill-bar__fill" style="--skill-pct: 85%"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="skill-category animate-on-scroll" data-delay="100" data-jojo="skill-card">
+                    <h3 class="skill-category__title">
+                        <span class="skill-icon" aria-hidden="true">🛡️</span> Back End
+                    </h3>
+                    <ul class="skill-list" role="list">
+                        <li class="skill-item">
+                            <span class="skill-name">Node.js / Express</span>
+                            <div class="skill-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100">
+                                <div class="skill-bar__fill" style="--skill-pct: 88%"></div>
+                            </div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Python / Django</span>
+                            <div class="skill-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                                <div class="skill-bar__fill" style="--skill-pct: 75%"></div>
+                            </div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">PostgreSQL / MongoDB</span>
+                            <div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                                <div class="skill-bar__fill" style="--skill-pct: 80%"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="skill-category animate-on-scroll" data-delay="200" data-jojo="skill-card">
+                    <h3 class="skill-category__title">
+                        <span class="skill-icon" aria-hidden="true">🌀</span> Tools &amp; DevOps
+                    </h3>
+                    <ul class="skill-list" role="list">
+                        <li class="skill-item">
+                            <span class="skill-name">Git / GitHub</span>
+                            <div class="skill-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100">
+                                <div class="skill-bar__fill" style="--skill-pct: 92%"></div>
+                            </div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Docker / CI/CD</span>
+                            <div class="skill-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+                                <div class="skill-bar__fill" style="--skill-pct: 70%"></div>
+                            </div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Linux / Bash</span>
+                            <div class="skill-bar" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100">
+                                <div class="skill-bar__fill" style="--skill-pct: 78%"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section section-contact" data-jojo="contact" aria-label="Contact">
+        <div class="container">
+            <header class="section-header animate-on-scroll">
+                <span class="section-tag">— Part IV —</span>
+                <h2 class="section-title">Contact</h2>
+                <p class="section-subtitle">Send a Stand Arrow</p>
+            </header>
+            <div class="contact-wrapper animate-on-scroll">
+                <form class="contact-form" id="contact-form" novalidate aria-label="Contact form">
+                    <div class="form-group">
+                        <label for="contact-name">Name</label>
+                        <input
+                            type="text"
+                            id="contact-name"
+                            name="name"
+                            class="form-input"
+                            placeholder="Your name"
+                            required
+                            autocomplete="name"
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email</label>
+                        <input
+                            type="email"
+                            id="contact-email"
+                            name="email"
+                            class="form-input"
+                            placeholder="your@email.com"
+                            required
+                            autocomplete="email"
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Message</label>
+                        <textarea
+                            id="contact-message"
+                            name="message"
+                            class="form-input form-textarea"
+                            placeholder="Your message…"
+                            rows="5"
+                            required
+                        ></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full" data-jojo="btn">
+                        Send Message ✉
+                    </button>
+                </form>
+                <aside class="contact-info" aria-label="Contact information">
+                    <h3>Let's Connect</h3>
+                    <ul class="contact-links" role="list">
+                        <li>
+                            <a href="https://github.com/Pucci-07" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+                                <span class="contact-icon" aria-hidden="true">🐙</span>
+                                <span>GitHub</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:contact@example.com" class="contact-link" aria-label="Send email">
+                                <span class="contact-icon" aria-hidden="true">📧</span>
+                                <span>Email</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://linkedin.com/" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+                                <span class="contact-icon" aria-hidden="true">💼</span>
+                                <span>LinkedIn</span>
+                            </a>
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container footer-inner">
+            <p class="footer-copy">
+                &copy; <span id="footer-year"></span> Pucci-07 &mdash; Built with
+                <span class="footer-heart" aria-label="love">♥</span> &amp; Stand Power
+            </p>
+            <p class="footer-quote">
+                <em>"Heaven can be reached by anyone, as long as they have the resolve."</em>
+            </p>
+        </div>
+    </footer>
+
     <script src="auth.js"></script>
     <script src="storage.js"></script>
     <script src="components.js"></script>
     <script src="timeline.js"></script>
     <script src="effects.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
